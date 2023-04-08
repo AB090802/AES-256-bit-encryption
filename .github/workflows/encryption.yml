@@ -13,8 +13,8 @@ jobs:
           sudo apt-get update && sudo apt-get install -y openssl zip
       - name: Download and Encrypt Zip file
         run: |
-          curl -L -o file.zip "https://url-to-your-zip-file"
-          openssl enc -aes-256-cbc -salt -in file.zip -out file.ozip -k "encryption_key"
+          curl -L -o file.zip "https://s3.ap-south-1.amazonaws.com/blob-ap-south-1-ukyez4/sara/b7/b75d/b75d54cf-e54f-4181-ae10-a7aed02eda2d.bin?response-content-disposition=attachment%3B%20filename%3D%22build.zip%22&response-content-type=application%2Fzip&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA4DM2EY46SOWUMUP4%2F20230408%2Fap-south-1%2Fs3%2Faws4_request&X-Amz-Date=20230408T172748Z&X-Amz-SignedHeaders=host&X-Amz-Expires=1800&X-Amz-Signature=29a76ede1b475b1849c66a74be479d451930be1816d27715ce31591da40e1df4"
+          openssl enc -aes-256-cbc -salt -in file.zip -out file.ozip -k "abhi@1234"
       - name: Upload Encrypted file to Bash Upload
         run: |
           curl --upload-file file.ozip https://transfer.sh/
