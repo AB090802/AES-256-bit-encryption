@@ -1,0 +1,20 @@
+name: Encrypt Zip to Ozip and Upload
+
+on:
+  push:
+    branches: [ main ]
+
+jobs:
+  encrypt_and_upload:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Install Dependencies
+        run: |
+          sudo apt-get update && sudo apt-get install -y openssl zip
+      - name: Download and Encrypt Zip file
+        run: |
+          curl -L -o file.zip "https://url-to-your-zip-file"
+          openssl enc -aes-256-cbc -salt -in file.zip -out file.ozip -k "encryption_key"
+      - name: Upload Encrypted file to Bash Upload
+        run: |
+          curl --upload-file file.ozip https://transfer.sh/
