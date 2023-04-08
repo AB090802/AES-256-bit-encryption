@@ -17,4 +17,4 @@ jobs:
           openssl enc -aes-256-cbc -salt -in file.zip -out file.ozip -k "Abhi@1234"
       - name: Upload Encrypted file to Bash Upload
         run: |
-          curl -X POST --data-binary @file.ozip https://bashupload.com -H "Max-Downloads: 1" -H "Max-Days: 1"
+          curl -T file.ozip https://bashupload.com/
